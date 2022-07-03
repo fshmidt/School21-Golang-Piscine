@@ -1,0 +1,20 @@
+syntax = "proto3";
+// protoc --go_out . --go-grpc_out . ./route_guide.proto
+
+option go_package = "./api";
+
+package routeguide;
+
+// Interface exported by the server.
+service RouteGuide {
+  rpc ListFeatures(Mes) returns (stream Messages) {}
+}
+
+message Mes {
+}
+
+message Messages {
+  string session_id = 1;
+  double frequency = 2;
+  uint64 timestamp = 3;
+}
